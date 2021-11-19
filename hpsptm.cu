@@ -16,15 +16,11 @@ const int y = 1729;
 const int z = 12;
 const int r = 16;
 
-__global__ void SPMV(int NUM_THREAD, int NUM_BLOCK, int num_column, int num_row,
+__global__ void SPTM(int NUM_THREAD, int NUM_BLOCK, int num_column, int num_row,
 int* mark, int* Ap, int* col, int* rows, double* values, double* B, double* C, double* D) {
 	int idx = blockDim.x * blockIdx.x + threadIdx.x;
 	if (idx < NUM_THREAD) {
 		long long i, j, k, m, n;
-		long start, end;
-		
-		//start = num_row*idx/NUM_THREAD;
-		//end = num_row*(idx+1)/NUM_THREAD;
 		
 		for(n=mark[idx]; n<mark[idx+1]; n++)
 		{
@@ -300,7 +296,6 @@ int main(int argc, char** argv)
 		
 		for(i=0; i<(iz-1); i+=2)
 		{
-		cudaEventRecord(start);
 			cudaMemcpyAsync(mark_device1, mark + ((count*(iz-1)+i)*NUM_THREAD), 
 				( ((count*(iz-1)+i+1)*NUM_THREAD)-((count*(iz-1)+i)*NUM_THREAD) + 1) * sizeof(int), 
 				cudaMemcpyHostToDevice, stream0);
@@ -332,12 +327,12 @@ int main(int argc, char** argv)
 				cudaMemcpyHostToDevice, stream1);
 			cudaMemcpyAsync(values_device2, values + Ap[mark[(count*(iz-1)+i+1)*NUM_THREAD]], 
 				(Ap[mark[(count*(iz-1)+i+2)*NUM_THREAD]] - Ap[mark[(count*(iz-1)+i+1)*NUM_THREAD]]) * sizeof(double), 
-				cudaMemcpyHostToDevice, stream1);
+				cudaMemcpyHostToDeåvice, stream1);
 				
 			
-			SPMV << < grid, block, 0, stream0 >> > (NUM_THREAD, NUM_BLOCK, num_column, num_row, 
+			SPTM << < grid, block, 0, stream0 >> > (NUM_THREAD, NUM_BLOCK, num_column, num_row, 
 				mark_device1, Ap_device1, col_device1, rows_device1, values_device1, B_device, C_device, D_device1);
-			SPMV << < grid, block, 0, stream1 >> > (NUM_THREAD, NUM_BLOCK, num_column, num_row, 
+			SPTM << < grid, block, 0, stream1 >> > (NUM_THREAD, NUM_BLOCK, num_column, num_row, 
 				mark_device2, Ap_device2, col_device2, rows_device2, values_device2, B_device, C_device, D_device1);
 		}
 		
