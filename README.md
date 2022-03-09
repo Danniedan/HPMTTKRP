@@ -7,13 +7,21 @@ The input format is expected to start with the length of each dimension and the 
 An example of a 5x3x3 tensor - test.tns:
 
 5	3	3	8
+
 2	3	1	1.00
+
 2	3	2	2.00
+
 2	3	3	10.00
+
 3	1	3	7.00
+
 3	3	1	6.00
+
 3	3	2	5.00
+
 5	3	2	3.00
+
 5	1	3	1.00
 
 #Build requirements:
