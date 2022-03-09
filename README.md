@@ -47,5 +47,5 @@ make all
 4. run ./hpsptm1
 5. enter the input filename (for example: ./test_output.tns)
 6. enter the length of each of the other two dimensions in test_output.tns (Y and Z) and the rank dimension (R) (for example: 3 2 16)
-7. enter the tile size, the number of threads in each GPU, and the number of GPUs (for example: 2 1 2 2 1)
+7. enter the tile size (ix, iy, and iz), the number of threads in each GPU, and the number of GPUs (for example: 2 1 2 2 1)
 
