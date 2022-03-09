@@ -46,6 +46,6 @@ make all
 3. enter the output filename (./test_output.tns), the useless data in test_output.tns was deleted
 4. run ./hpsptm1
 5. enter the input filename (./test_output.tns)
-6. enter the length of each dimension in test_output.tns (3 2 2)
+6. enter the length of each of the other two dimensions in test_output.tns (3 2 2)
 7. enter the tile size, the number of threads in each GPU, and the number of GPUs (2 1 2 2 2)
 
