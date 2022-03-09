@@ -24,15 +24,23 @@ An example of a 5x3x3 tensor - test.tns:
 
 5	1	3	1.00
 
+
 #Build requirements:
+
 GCC Compiler
+
 CUDA SDK
+
 OpenMP
 
+
 #Build
+
 make all
 
+
 #Run
+
 1. run ./data_process
 2. enter the input filename (./test.tns).
 3. enter the output filename (./test_output.tns), the useless data in test_output.tns was deleted
