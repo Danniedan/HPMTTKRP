@@ -1,6 +1,6 @@
 # HPMTTKRP
 
-#Tensor Format
+## Tensor Format
 
 The input format is expected to start with the length of each dimension and the number of nonzero elements. The following lines will have the coordinates and values of each nonzero elements. 
 
@@ -25,21 +25,21 @@ An example of a 5x3x3 tensor - test.tns:
 5	1	3	1.00
 
 
-#Build requirements:
+## Build requirements:
 
-GCC Compiler
+- GCC Compiler
 
-CUDA SDK
+- CUDA SDK
 
-OpenMP
+- OpenMP
 
 
-#Build
+## Build
 
 make all
 
 
-#Run
+## Run
 
 1. run ./data_process
 2. enter the input filename (for example: ./test.tns)
