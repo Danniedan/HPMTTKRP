@@ -1,5 +1,7 @@
 # HPMTTKRP
 
+Exploiting Hierarchical Parallelism and Reusability in Tensor Kernel Processing on Heterogeneous HPC Systems
+
 ## Tensor Format
 
 The input format is expected to start with the length of each dimension and the number of nonzero elements. The following lines will have the coordinates and values of each nonzero elements. 
